@@ -40,7 +40,7 @@ module.exports = function (grunt) {
 				},			
 
 				files: {
-					'html/Устройство-Web-приложения.html': 'src/elu_dia_docs.wiki/Home.mediawiki',
+					'html/elu_dia_docs/Устройство-Web-приложения.html': 'src/elu_dia_docs.wiki/Home.mediawiki',
 				},
 
 			},
@@ -52,9 +52,9 @@ module.exports = function (grunt) {
 				},			
 
 				files: {
-					'html/Общие-положения.html': 'src/elu_dia_docs.wiki/Общие-положения.mediawiki',
-					'html/Статические-запросы.html': 'src/elu_dia_docs.wiki/Статические-запросы.mediawiki',
-					'html/Динамические-запросы.html': 'src/elu_dia_docs.wiki/Динамические-запросы.mediawiki',
+					'html/elu_dia_docs/Общие-положения.html': 'src/elu_dia_docs.wiki/Общие-положения.mediawiki',
+					'html/elu_dia_docs/Статические-запросы.html': 'src/elu_dia_docs.wiki/Статические-запросы.mediawiki',
+					'html/elu_dia_docs/Динамические-запросы.html': 'src/elu_dia_docs.wiki/Динамические-запросы.mediawiki',
 				},
 
 			},
@@ -66,8 +66,8 @@ module.exports = function (grunt) {
 				},			
 
 				files: {
-					'html/Общий-формат-запросов.html': 'src/elu_dia_docs.wiki/Общий-формат-запросов.mediawiki',
-					'html/Общий-формат-ответов.html': 'src/elu_dia_docs.wiki/Общий-формат-ответов.mediawiki',
+					'html/elu_dia_docs/Общий-формат-запросов.html': 'src/elu_dia_docs.wiki/Общий-формат-запросов.mediawiki',
+					'html/elu_dia_docs/Общий-формат-ответов.html': 'src/elu_dia_docs.wiki/Общий-формат-ответов.mediawiki',
 				},
 
 			},
@@ -81,7 +81,7 @@ module.exports = function (grunt) {
 				level: 1,
 			
 				src: [
-					'html/Устройство-Web-приложения.html',
+					'html/elu_dia_docs/Устройство-Web-приложения.html',
 				],
 
 			},
@@ -91,9 +91,9 @@ module.exports = function (grunt) {
 				level: 2,
 			
 				src: [
-					'html/Общие-положения.html',
-					'html/Статические-запросы.html',
-					'html/Динамические-запросы.html',
+					'html/elu_dia_docs/Общие-положения.html',
+					'html/elu_dia_docs/Статические-запросы.html',
+					'html/elu_dia_docs/Динамические-запросы.html',
 				],
 
 			},
@@ -103,8 +103,8 @@ module.exports = function (grunt) {
 				level: 3,
 			
 				src: [
-					'html/Общий-формат-запросов.html',
-					'html/Общий-формат-ответов.html',
+					'html/elu_dia_docs/Общий-формат-запросов.html',
+					'html/elu_dia_docs/Общий-формат-ответов.html',
 				],
 
 			},
@@ -116,8 +116,8 @@ module.exports = function (grunt) {
 			elu_dia_docs: {
 						
 				src: [
-					'html/Устройство-Web-приложения.html',
-					'html/Динамические-запросы.html',
+					'html/elu_dia_docs/Устройство-Web-приложения.html',
+					'html/elu_dia_docs/Динамические-запросы.html',
 				],
 
 			},
@@ -136,12 +136,12 @@ module.exports = function (grunt) {
 				dest: 'html/elu_dia_docs.html',
 				
 				src: [
-					'html/Устройство-Web-приложения.html',
-					'html/Общие-положения.html',
-					'html/Статические-запросы.html',
-					'html/Динамические-запросы.html',
-					'html/Общий-формат-запросов.html',
-					'html/Общий-формат-ответов.html',
+					'html/elu_dia_docs/Устройство-Web-приложения.html',
+					'html/elu_dia_docs/Общие-положения.html',
+					'html/elu_dia_docs/Статические-запросы.html',
+					'html/elu_dia_docs/Динамические-запросы.html',
+					'html/elu_dia_docs/Общий-формат-запросов.html',
+					'html/elu_dia_docs/Общий-формат-ответов.html',
 				]
 				
 			}
@@ -151,7 +151,7 @@ module.exports = function (grunt) {
 		wkhtmltopdf: {
 			build: {
 				src: 'html/elu_dia_docs.html',
-				dest: 'pdf/',
+				dest: 'docs/',
 				args: [
 					'--outline-depth', 10,		
 					'--footer-center', '[page]',

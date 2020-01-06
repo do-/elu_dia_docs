@@ -14,7 +14,7 @@ module.exports = function (grunt) {
         
         for (let f of grunt.file.expand (data.src)) {
         	let txt = grunt.file.read (f)
-			grunt.file.write (f, bra + path.basename (f, '.html') + ket + lf + txt)
+			grunt.file.write (f, bra + path.basename (f, '.html').replace (/-/g, ' ') + ket + lf + txt)
         }
         
 	})
@@ -40,7 +40,7 @@ module.exports = function (grunt) {
 				},			
 
 				files: {
-					'html/Home.html': 'src/elu_dia_docs.wiki/Home.mediawiki',
+					'html/Устройство-Web-приложения.html': 'src/elu_dia_docs.wiki/Home.mediawiki',
 				},
 
 			},
@@ -48,10 +48,11 @@ module.exports = function (grunt) {
 			elu_dia_docs_1: {
 			
 				options: {
-					pandocOptions: '-f mediawiki -t html --shift-heading-level-by 1',
+					pandocOptions: '-f mediawiki -t html --shift-heading-level-by 2',
 				},			
 
 				files: {
+					'html/Общие-положения.html': 'src/elu_dia_docs.wiki/Общие-положения.mediawiki',
 					'html/Статические-запросы.html': 'src/elu_dia_docs.wiki/Статические-запросы.mediawiki',
 					'html/Динамические-запросы.html': 'src/elu_dia_docs.wiki/Динамические-запросы.mediawiki',
 				},
@@ -61,7 +62,7 @@ module.exports = function (grunt) {
 			elu_dia_docs_2: {
 			
 				options: {
-					pandocOptions: '-f mediawiki -t html --shift-heading-level-by 2',
+					pandocOptions: '-f mediawiki -t html --shift-heading-level-by 3',
 				},			
 
 				files: {
@@ -80,6 +81,16 @@ module.exports = function (grunt) {
 				level: 1,
 			
 				src: [
+					'html/Устройство-Web-приложения.html',
+				],
+
+			},
+		
+			elu_dia_docs_2: {
+			
+				level: 2,
+			
+				src: [
 					'html/Общие-положения.html',
 					'html/Статические-запросы.html',
 					'html/Динамические-запросы.html',
@@ -87,9 +98,9 @@ module.exports = function (grunt) {
 
 			},
 
-			elu_dia_docs_2: {
+			elu_dia_docs_3: {
 			
-				level: 2,
+				level: 3,
 			
 				src: [
 					'html/Общий-формат-запросов.html',
@@ -105,7 +116,7 @@ module.exports = function (grunt) {
 			elu_dia_docs: {
 						
 				src: [
-					'html/Home.html',
+					'html/Устройство-Web-приложения.html',
 					'html/Динамические-запросы.html',
 				],
 
@@ -118,14 +129,14 @@ module.exports = function (grunt) {
 			elu_dia_docs: {
 				
 				options: {			
-					banner: '<html><head><meta charset="utf-8"></head><body>' + lf,
+					banner: '<html><head><meta charset="utf-8"><style>body{font-family:Arial}</style></head><body>' + lf,
 					footer: lf + '</body></html>',				
 				},
 			
 				dest: 'html/elu_dia_docs.html',
 				
 				src: [
-					'html/Home.html',
+					'html/Устройство-Web-приложения.html',
 					'html/Общие-положения.html',
 					'html/Статические-запросы.html',
 					'html/Динамические-запросы.html',
@@ -144,6 +155,7 @@ module.exports = function (grunt) {
 				args: [
 					'--outline-depth', 10,		
 					'--footer-center', '[page]',
+					'cover', 'cover.html',
 				],
         	}
 		}		
@@ -163,6 +175,7 @@ module.exports = function (grunt) {
 	grunt.registerTask ('elu_dia_docs_fix_html', [
 		'add_h:elu_dia_docs_1',
 		'add_h:elu_dia_docs_2',
+		'add_h:elu_dia_docs_3',
 		'del_last_ul',
 	])
 	

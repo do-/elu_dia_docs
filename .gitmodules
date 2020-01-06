@@ -1,0 +1,3 @@
+[submodule "src/elu_dia_docs.wiki"]
+	path = src/elu_dia_docs.wiki
+	url = https://github.com/do-/elu_dia_docs.wiki.git

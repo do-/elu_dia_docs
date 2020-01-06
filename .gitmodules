@@ -2,5 +2,5 @@
 	path = src/elu_dia_docs.wiki
 	url = https://github.com/do-/elu_dia_docs.wiki.git
 [submodule "src/dia.js.wiki.git"]
-	path = src/dia.js.wiki.git
+	path = src/dia.js.wiki
 	url = https://github.com/do-/dia.js.wiki.git

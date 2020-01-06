@@ -70,7 +70,7 @@ module.exports = function (grunt) {
 				},
 
 			},
-
+			
 		},
 		
 		add_h: {
@@ -135,12 +135,24 @@ module.exports = function (grunt) {
 				
 			}
 		
-		}
+		},
+		
+		wkhtmltopdf: {
+			build: {
+				src: 'html/elu_dia_docs.html',
+				dest: 'pdf/',
+				args: [
+					'--outline-depth', 10,		
+					'--footer-center', '[page]',
+				],
+        	}
+		}		
 
 	})
 
 	grunt.loadNpmTasks ('grunt-panda')
 	grunt.loadNpmTasks ('grunt-contrib-concat')
+	grunt.loadNpmTasks ('grunt-wkhtmltopdf')
 
 	grunt.registerTask ('elu_dia_docs_to_html', [
 		'panda:elu_dia_docs_0',
@@ -158,6 +170,7 @@ module.exports = function (grunt) {
 		'elu_dia_docs_to_html',
 		'elu_dia_docs_fix_html',
 		'concat:elu_dia_docs',
+		'wkhtmltopdf',
 	])
 
 };

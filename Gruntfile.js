@@ -4,7 +4,7 @@ module.exports = function (grunt) {
 
 	const lf = grunt.util.linefeed
 
-	grunt.registerMultiTask ('add_h', 'Adds the H tag', function () {
+	grunt.registerMultiTask ('fix_html', 'Adds the H tag', function () {
 	
         let data = this.data
 
@@ -13,41 +13,25 @@ module.exports = function (grunt) {
         let ket = '</' + tag + '>'
         
         for (let f of grunt.file.expand (data.src)) {
-        	let txt = grunt.file.read (f)
-			grunt.file.write (f, bra + path.basename (f, '.html').replace (/-/g, ' ') + ket + lf + txt)
+        
+        	let lines = [bra + path.basename (f, '.html').replace (/-/g, ' ') + ket]
+        	
+			for (let line of grunt.file.read (f).split (/[\n\r]+/)) {
+				if (line.indexOf ('data-end') > -1) break
+				lines.push (line)
+			}
+
+			grunt.file.write (f, lines.join (lf))
+
         }
         
 	})
 
-	grunt.registerMultiTask ('del_last_ul', 'Deletes the last UL', function () {
-	        
-        for (let f of grunt.file.expand (this.data.src)) {
-        	let lines = grunt.file.read (f).split (/[\r\n]+/)
-        	let idx = lines.lastIndexOf ('<ul>')
-			if (idx > -1) grunt.file.write (f, lines.slice (0, idx).join (lf))
-        }
-        
-	})
-	
 	let targets = {
 	
 		panda: {},
 		
-		add_h: {},
-
-		del_last_ul: {
-		
-			elu_dia_docs: {
-						
-				src: [
-					'html/elu_dia_docs/Устройство-Web-приложения.html',
-					'html/elu_dia_docs/Динамические-запросы.html',
-//					'html/dia_js/Серверная библиотека Dia.js.html',
-				],
-
-			},
-
-		},
+		fix_html: {},
 
 		concat: {
 
@@ -77,9 +61,7 @@ module.exports = function (grunt) {
         	}
 		},
 		
-		clean: {
-			html: ['html']
-		},
+		clean: {html: ['html']},
 		
 	}
 	
@@ -99,14 +81,13 @@ module.exports = function (grunt) {
 		if (!(level in targets.panda)) targets.panda [level] = {files: {}, options: {pandocOptions: '-f mediawiki -t html --shift-heading-level-by ' + level}}		
 		targets.panda [level].files [html] = `src/${part}/${name}.mediawiki`
 		
-		if (!(level in targets.add_h)) targets.add_h [level] = {level, src: []}
-		targets.add_h [level].src.push (html)
+		if (!(level in targets.fix_html)) targets.fix_html [level] = {level, src: []}
+		targets.fix_html [level].src.push (html)
 
 		targets.concat.elu_dia_docs.src.push (html)
 
 	}
-console.log (targets.panda)
-console.log (targets.add_h)
+
 	grunt.initConfig (targets)
 
 	grunt.loadNpmTasks ('grunt-panda')
@@ -116,8 +97,7 @@ console.log (targets.add_h)
 	
 	grunt.registerTask ('build', [
 		'panda',
-		'add_h',
-		'del_last_ul',
+		'fix_html',
 		'concat',
 		'wkhtmltopdf',
 	])

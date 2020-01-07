@@ -7,3 +7,6 @@
 [submodule "src/elu_js"]
 	path = src/elu_js
 	url = https://github.com/do-/elu.js.wiki.git
+[submodule "src/elu_w2u"]
+	path = src/elu_w2ui
+	url = https://github.com/do-/elu_w2ui.wiki.git

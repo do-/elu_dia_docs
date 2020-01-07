@@ -17,6 +17,24 @@ elu_js/Клиентская библиотека elu.js	Home
  elu_js/Отображение результатов (fill)	to_fill
   elu_js/Обновление области (refill)	refill
  elu_js/Получение введённых данных (values)	values
+ elu_w2ui/Переходник для w2ui	Home
+  elu_w2ui/[пере]создание комплекта панелей (w2relayout)	w2relayout
+  elu_w2ui/[пере]создание таблицы (w2regrid)	w2regrid
+  elu_w2ui/[пере]создание формы ввода (w2reform)	w2reform
+  elu_w2ui/впрыск введённых значений в AJAX-запрос на источник данных для списочного поля формы расширенного поиска (w2injectSearchValues)	w2injectSearchValues
+  elu_w2ui/загрузка на сервер файлов с popup-формы (w2_upload_files_from_popup)	w2_upload_files_from_popup
+  elu_w2ui/закрытие popup с обновлением таблицы (w2_close_popup_reload_grid)	w2_close_popup_reload_grid
+  elu_w2ui/обнаружение и разблокировка панели со значком ожидания (w2_waiting_panel)	w2_waiting_panel
+  elu_w2ui/обработка словарей (add_vocabularies)	add_vocabularies
+  elu_w2ui/открытие вкладки для созданного объекта (w2_confirm_open_tab)	w2_confirm_open_tab
+  elu_w2ui/отмена всех w2utils.lock() в окне (unlockAll)	unlockAll
+  elu_w2ui/перезагрузка UI-блока, связанного с формой (w2form.reload_block)	w2form.reload_block
+  elu_w2ui/поиск таблицы на экране (w2_first_grid)	w2_first_grid
+  elu_w2ui/поиск текущей popup-формы на экране (w2_popup_form)	w2_popup_form
+  elu_w2ui/поиск текущей формы ввода на странице (w2_panel_form)	w2_panel_form
+  elu_w2ui/показ popup-окна (w2uppop)	w2uppop
+  elu_w2ui/получение набора нормализованных значений полей формы (w2form.values)	w2form.values
+  elu_w2ui/экспорт в MS Excel (w2grid.saveAsXLS)	w2grid.saveAsXLS
 dia_js/Серверная библиотека Dia.js	Home
  dia_js/Структура-директорий
  dia_js/Конфигурация

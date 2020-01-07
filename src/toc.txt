@@ -5,4 +5,41 @@ elu_dia_docs/Устройство-Web-приложения	Home
   elu_dia_docs/Общий-формат-запросов
   elu_dia_docs/Общий-формат-ответов
 dia_js/Серверная библиотека Dia.js	Home
+ dia_js/Структура-директорий
+ dia_js/Конфигурация
+ dia_js/Модель БД	Модель
+  dia_js/Генератор SQL	this.db.query
+ dia_js/Маршрутизация запросов	type-id-action
  dia_js/Обработчики
+  dia_js/Выдача статических файлов	EluStatic
+  dia_js/Подзапросы	Async
+  dia_js/Обработчик файлов	File
+ dia_js/Модули
+ dia_js/API
+  dia_js/this.uuid
+  dia_js/this.rq
+  dia_js/this.user
+    dia_js/Схемы аутентификации	Аутентификация
+    dia_js/Пароли
+ dia_js/Ресурсы
+  dia_js/this.db — родная БД	this.db
+   dia_js/this.db.add
+   dia_js/this.db.add_all_cnt
+   dia_js/this.db.add_vocabularies
+   dia_js/this.db.do
+   dia_js/this.db.fold
+   dia_js/this.db.get
+   dia_js/this.db.insert
+   dia_js/this.db.insert_if_absent
+   dia_js/this.db.is_pk_violation
+   dia_js/this.db.list
+   dia_js/this.db.load
+   dia_js/this.db.select_all
+   dia_js/this.db.select_all_cnt
+   dia_js/this.db.select_hash
+   dia_js/this.db.select_loop.asciidoc
+   dia_js/this.db.select_scalar
+   dia_js/this.db.update
+   dia_js/this.db.upsert
+  dia_js/this.this.http — HTTP-клиент	this.http
+  dia_js/this.this.timer — таймер	this.timer

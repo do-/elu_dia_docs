@@ -27,18 +27,14 @@ module.exports = function (grunt) {
         
 	})
 
-	let targets = {
-	
-		panda: {},
-		
-		fix_html: {},
+	let targets = {panda: {}, fix_html: {}, clean: {html: ['html']},
 
 		concat: {
 
 			elu_dia_docs: {
 
 				options: {			
-					banner: '<html><head><meta charset="utf-8"><style>body{font-family:Arial}</style></head><body>' + lf,
+					banner: '<html><head><meta charset="utf-8"><style>body{font-family:Arial; font-size:12pt;}</style></head><body>' + lf,
 					footer: lf + '</body></html>',				
 				},
 
@@ -59,9 +55,7 @@ module.exports = function (grunt) {
 					'cover', 'cover.html',
 				],
         	}
-		},
-		
-		clean: {html: ['html']},
+		},		
 		
 	}
 	
@@ -87,6 +81,8 @@ module.exports = function (grunt) {
 		targets.concat.elu_dia_docs.src.push (html)
 
 	}
+
+	for (let k of ['panda', 'fix_html']) console.log (targets [k])
 
 	grunt.initConfig (targets)
 

@@ -38,7 +38,7 @@ module.exports = function (grunt) {
 					footer: lf + '</body></html>',				
 				},
 
-				src: [],
+				src: ['intro.html'],
 				dest: 'html/elu_dia_docs.html',				
 				
 			}

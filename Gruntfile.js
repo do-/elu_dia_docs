@@ -34,7 +34,7 @@ module.exports = function (grunt) {
 			elu_dia_docs: {
 
 				options: {			
-					banner: '<html><head><meta charset="utf-8"><style>body{font-family:Arial; font-size:12pt;}</style></head><body>' + lf,
+					banner: '<html><head><meta charset="utf-8"><style>body{font-family:Arial; font-size:12pt;}h1{page-break-before: always;}</style></head><body>' + lf,
 					footer: lf + '</body></html>',				
 				},
 

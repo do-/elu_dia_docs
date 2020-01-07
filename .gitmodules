@@ -4,3 +4,6 @@
 [submodule "src/dia.js.wiki.git"]
 	path = src/dia_js
 	url = https://github.com/do-/dia.js.wiki.git
+[submodule "src/elu_js"]
+	path = src/elu_js
+	url = https://github.com/do-/elu.js.wiki.git

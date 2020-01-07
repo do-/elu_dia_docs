@@ -4,6 +4,19 @@ elu_dia_docs/Устройство-Web-приложения	Home
  elu_dia_docs/Динамические-запросы
   elu_dia_docs/Общий-формат-запросов
   elu_dia_docs/Общий-формат-ответов
+elu_js/Клиентская библиотека elu.js	Home
+ elu_js/Структура кода	show_block
+  elu_js/$_DO
+  elu_js/$_REQUEST
+  elu_js/$_USER
+ elu_js/Запуск AJAX-запросов	response
+  elu_js/Обработка ошибок ($_DO.apologize)	$_DO.apologize
+  elu_js/Получение бинарных файлов (download)	download
+  elu_js/Отправка бинарных файлов (Base64file.upload)	Base64file.upload
+  elu_js/Запрос без ответа (jerk)	jerk
+ elu_js/Отображение результатов (fill)	to_fill
+  elu_js/Обновление области (refill)	refill
+ elu_js/Получение введённых данных (values)	values
 dia_js/Серверная библиотека Dia.js	Home
  dia_js/Структура-директорий
  dia_js/Конфигурация

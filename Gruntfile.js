@@ -28,89 +28,13 @@ module.exports = function (grunt) {
         }
         
 	})
-
-	grunt.initConfig ({
 	
-		panda: {
-
-			elu_dia_docs_0: {
-			
-				options: {
-					pandocOptions: '-f mediawiki -t html --shift-heading-level-by 0',
-				},			
-
-				files: {
-					'html/elu_dia_docs/Устройство-Web-приложения.html': 'src/elu_dia_docs.wiki/Home.mediawiki',
-				},
-
-			},
-
-			elu_dia_docs_1: {
-			
-				options: {
-					pandocOptions: '-f mediawiki -t html --shift-heading-level-by 2',
-				},			
-
-				files: {
-					'html/elu_dia_docs/Общие-положения.html': 'src/elu_dia_docs.wiki/Общие-положения.mediawiki',
-					'html/elu_dia_docs/Статические-запросы.html': 'src/elu_dia_docs.wiki/Статические-запросы.mediawiki',
-					'html/elu_dia_docs/Динамические-запросы.html': 'src/elu_dia_docs.wiki/Динамические-запросы.mediawiki',
-				},
-
-			},
-			
-			elu_dia_docs_2: {
-			
-				options: {
-					pandocOptions: '-f mediawiki -t html --shift-heading-level-by 3',
-				},			
-
-				files: {
-					'html/elu_dia_docs/Общий-формат-запросов.html': 'src/elu_dia_docs.wiki/Общий-формат-запросов.mediawiki',
-					'html/elu_dia_docs/Общий-формат-ответов.html': 'src/elu_dia_docs.wiki/Общий-формат-ответов.mediawiki',
-				},
-
-			},
-			
-		},
+	let targets = {
+	
+		panda: {},
 		
-		add_h: {
-		
-			elu_dia_docs_1: {
-			
-				level: 1,
-			
-				src: [
-					'html/elu_dia_docs/Устройство-Web-приложения.html',
-				],
+		add_h: {},
 
-			},
-		
-			elu_dia_docs_2: {
-			
-				level: 2,
-			
-				src: [
-					'html/elu_dia_docs/Общие-положения.html',
-					'html/elu_dia_docs/Статические-запросы.html',
-					'html/elu_dia_docs/Динамические-запросы.html',
-				],
-
-			},
-
-			elu_dia_docs_3: {
-			
-				level: 3,
-			
-				src: [
-					'html/elu_dia_docs/Общий-формат-запросов.html',
-					'html/elu_dia_docs/Общий-формат-ответов.html',
-				],
-
-			},
-			
-		},		
-		
 		del_last_ul: {
 		
 			elu_dia_docs: {
@@ -118,31 +42,24 @@ module.exports = function (grunt) {
 				src: [
 					'html/elu_dia_docs/Устройство-Web-приложения.html',
 					'html/elu_dia_docs/Динамические-запросы.html',
+//					'html/dia_js/Серверная библиотека Dia.js.html',
 				],
 
 			},
-			
-		},		
-		
+
+		},
+
 		concat: {
-		
+
 			elu_dia_docs: {
-				
+
 				options: {			
 					banner: '<html><head><meta charset="utf-8"><style>body{font-family:Arial}</style></head><body>' + lf,
 					footer: lf + '</body></html>',				
 				},
-			
-				dest: 'html/elu_dia_docs.html',
-				
-				src: [
-					'html/elu_dia_docs/Устройство-Web-приложения.html',
-					'html/elu_dia_docs/Общие-положения.html',
-					'html/elu_dia_docs/Статические-запросы.html',
-					'html/elu_dia_docs/Динамические-запросы.html',
-					'html/elu_dia_docs/Общий-формат-запросов.html',
-					'html/elu_dia_docs/Общий-формат-ответов.html',
-				]
+
+				src: [],
+				dest: 'html/elu_dia_docs.html',				
 				
 			}
 		
@@ -158,32 +75,57 @@ module.exports = function (grunt) {
 					'cover', 'cover.html',
 				],
         	}
-		}		
+		},
+		
+		clean: {
+			html: ['html']
+		},
+		
+	}
+	
+	for (let line of grunt.file.read ('src/toc.txt').split (/[\r\n]+/)) {
 
-	})
+		let level = 0; while (level < line.length && line.charAt (level) == ' ') level ++
+
+		let [path, name]  = line.trim ().split (/\t/)
+		let [part, label] = path.split ('/')
+
+		if (!name) name   = label
+		
+		let html          = `html/${part}/${label}.html`
+
+		level ++
+
+		if (!(level in targets.panda)) targets.panda [level] = {files: {}, options: {pandocOptions: '-f mediawiki -t html --shift-heading-level-by ' + level}}		
+		targets.panda [level].files [html] = `src/${part}/${name}.mediawiki`
+		
+		if (!(level in targets.add_h)) targets.add_h [level] = {level, src: []}
+		targets.add_h [level].src.push (html)
+
+		targets.concat.elu_dia_docs.src.push (html)
+
+	}
+console.log (targets.panda)
+console.log (targets.add_h)
+	grunt.initConfig (targets)
 
 	grunt.loadNpmTasks ('grunt-panda')
 	grunt.loadNpmTasks ('grunt-contrib-concat')
+	grunt.loadNpmTasks ('grunt-contrib-clean')
 	grunt.loadNpmTasks ('grunt-wkhtmltopdf')
-
-	grunt.registerTask ('elu_dia_docs_to_html', [
-		'panda:elu_dia_docs_0',
-		'panda:elu_dia_docs_1',
-		'panda:elu_dia_docs_2',
-	])
 	
-	grunt.registerTask ('elu_dia_docs_fix_html', [
-		'add_h:elu_dia_docs_1',
-		'add_h:elu_dia_docs_2',
-		'add_h:elu_dia_docs_3',
+	grunt.registerTask ('build', [
+		'panda',
+		'add_h',
 		'del_last_ul',
-	])
-	
-	grunt.registerTask ('default', [
-		'elu_dia_docs_to_html',
-		'elu_dia_docs_fix_html',
-		'concat:elu_dia_docs',
+		'concat',
 		'wkhtmltopdf',
+	])
+
+	grunt.registerTask ('default', [
+		'clean',
+		'build',
+//		'clean',
 	])
 
 };

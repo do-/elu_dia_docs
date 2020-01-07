@@ -1,0 +1,8 @@
+elu_dia_docs/Устройство-Web-приложения	Home
+ elu_dia_docs/Общие-положения
+ elu_dia_docs/Статические-запросы
+ elu_dia_docs/Динамические-запросы
+  elu_dia_docs/Общий-формат-запросов
+  elu_dia_docs/Общий-формат-ответов
+dia_js/Серверная библиотека Dia.js	Home
+ dia_js/Обработчики

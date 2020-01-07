@@ -10,3 +10,6 @@
 [submodule "src/elu_w2u"]
 	path = src/elu_w2ui
 	url = https://github.com/do-/elu_w2ui.wiki.git
+[submodule "src/elu_slick"]
+	path = src/elu_slick
+	url = https://github.com/do-/elu_slick.wiki.git

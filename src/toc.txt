@@ -35,6 +35,12 @@ elu_js/Клиентская библиотека elu.js	Home
   elu_w2ui/показ popup-окна (w2uppop)	w2uppop
   elu_w2ui/получение набора нормализованных значений полей формы (w2form.values)	w2form.values
   elu_w2ui/экспорт в MS Excel (w2grid.saveAsXLS)	w2grid.saveAsXLS
+ elu_slick/Переходник для SlickGrid и jQueryUI	Home
+  elu_slick/draw_form
+   elu_slick/$.on_change
+   elu_slick/$.valid_data
+  elu_slick/draw_popup
+  elu_slick/draw_table
 dia_js/Серверная библиотека Dia.js	Home
  dia_js/Структура-директорий
  dia_js/Конфигурация

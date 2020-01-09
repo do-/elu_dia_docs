@@ -7,21 +7,28 @@ module.exports = function (grunt) {
 	grunt.registerMultiTask ('fix_html', 'Adds the H tag', function () {
 	
         let data = this.data
+        let tag  = 'h'  + data.level
+        
+        for (let f of data.srcc) {
 
-        let tag = 'h'  + data.level
-        let bra = '<'  + tag + '>'
-        let ket = '</' + tag + '>'
-        
-        for (let f of grunt.file.expand (data.src)) {
-        
-        	let lines = [bra + path.basename (f, '.html').replace (/-/g, ' ') + ket]
+        	let lines = [`<span id="${f.name}">`]
+        	if (f.name != f.label) lines.push (`<span id="${f.label}">`)
+			lines.push (`<${tag}>${f.label.replace (/-/g, ' ')}</${tag}></span>`)
+        	if (f.name != f.label) lines.push ('</span>')
         	
-			for (let line of grunt.file.read (f).split (/[\n\r]+/)) {
+			for (let line of grunt.file.read (f.html).split (/[\n\r]+/)) {
+			
 				if (line.indexOf ('data-end') > -1) break
-				lines.push (line)
+				
+				lines.push (line
+					.replace (/<a href="(.*?)" title="wikilink">/g, 
+						(match, p1, p2, offset, string) => 
+							`<a href="#${p1}" title="wikilink">`)
+				)
+
 			}
 
-			grunt.file.write (f, lines.join (lf))
+			grunt.file.write (f.html, lines.join (lf))
 
         }
         
@@ -53,6 +60,7 @@ module.exports = function (grunt) {
 					'--outline-depth', 10,		
 					'--footer-center', '[page]',
 					'cover', 'cover.html',
+					'--enable-internal-links',
 				],
         	}
 		},		
@@ -75,14 +83,14 @@ module.exports = function (grunt) {
 		if (!(level in targets.panda)) targets.panda [level] = {files: {}, options: {pandocOptions: '-f mediawiki -t html --shift-heading-level-by ' + level}}		
 		targets.panda [level].files [html] = `src/${part}/${name}.mediawiki`
 		
-		if (!(level in targets.fix_html)) targets.fix_html [level] = {level, src: []}
-		targets.fix_html [level].src.push (html)
+		if (!(level in targets.fix_html)) targets.fix_html [level] = {level, srcc: []}
+		targets.fix_html [level].srcc.push ({html, name, label})
 
 		targets.concat.elu_dia_docs.src.push (html)
 
 	}
 
-	for (let k of ['panda', 'fix_html']) console.log (targets [k])
+//	for (let k of ['panda', 'fix_html']) console.log (targets [k])
 
 	grunt.initConfig (targets)
 

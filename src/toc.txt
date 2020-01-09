@@ -76,9 +76,9 @@ dia_js/Серверная библиотека Dia.js	Home
    dia_js/this.db.select_all
    dia_js/this.db.select_all_cnt
    dia_js/this.db.select_hash
-   dia_js/this.db.select_loop.asciidoc
+   dia_js/this.db.select_loop
    dia_js/this.db.select_scalar
    dia_js/this.db.update
    dia_js/this.db.upsert
-  dia_js/this.this.http — HTTP-клиент	this.http
-  dia_js/this.this.timer — таймер	this.timer
+  dia_js/this.http — HTTP-клиент	this.http
+  dia_js/this.timer — таймер	this.timer

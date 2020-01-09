@@ -65,6 +65,7 @@ dia_js/Серверная библиотека Dia.js	Home
    dia_js/this.db.add_vocabularies
    dia_js/this.db.do
    dia_js/this.db.delete
+   dia_js/this.db.delepsert
    dia_js/this.db.fold
    dia_js/this.db.get
    dia_js/this.db.insert

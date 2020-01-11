@@ -57,6 +57,7 @@ module.exports = function (grunt) {
 				src: 'html/elu_dia_docs.html',
 				dest: 'docs/',
 				args: [
+					'--dpi', 200,		
 					'--outline-depth', 10,		
 					'--footer-center', '[page]',
 					'cover', 'cover.html',

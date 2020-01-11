@@ -60,11 +60,15 @@ module.exports = function (grunt) {
 				src: 'html/elu_dia_docs.html',
 				dest: 'docs/',
 				args: [
+					'--margin-top', '20mm',
+					'--margin-bottom', '20mm',
+					'--margin-left', '20mm',
+					'--margin-right', '20mm',
+					'--footer-spacing', '5',
 					'--dpi', 200,		
 					'--outline-depth', 10,		
 					'--footer-center', '[page]',
 					'cover', 'cover.html',
-//					'--enable-internal-links',
 				],
         	}
 		},		

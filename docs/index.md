@@ -1,1 +1,1 @@
-[PDF](elu_dia_docs.pdf)
+[PDF](http://github.com/do-/elu_dia_docs/releases/latest/download/elu_dia_docs.pdf)

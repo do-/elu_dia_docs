@@ -34,14 +34,18 @@ module.exports = function (grunt) {
         
 	})
 
-	let targets = {panda: {}, fix_html: {}, clean: {html: ['html']},
+	let targets = {panda: {}, fix_html: {}, clean: {html: ['html']}, 
+		
+		copy: {
+			css: {files: [{src: '*.css', dest: 'html/'}]
+		}},
 
 		concat: {
 
 			elu_dia_docs: {
 
 				options: {			
-					banner: '<html><head><meta charset="utf-8"><style>body{font-family:Arial; font-size:12pt;}h1{page-break-before: always;}</style></head><body>' + lf,
+					banner: '<html><head><meta charset="utf-8"><link href=style.css rel=stylesheet type=text/css></head><body>' + lf,
 					footer: lf + '</body></html>',				
 				},
 
@@ -99,8 +103,10 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks ('grunt-contrib-concat')
 	grunt.loadNpmTasks ('grunt-contrib-clean')
 	grunt.loadNpmTasks ('grunt-wkhtmltopdf')
+	grunt.loadNpmTasks ('grunt-contrib-copy')
 	
 	grunt.registerTask ('build', [
+		'copy',
 		'panda',
 		'fix_html',
 		'concat',

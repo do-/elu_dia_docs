@@ -1,0 +1,12 @@
+body {
+	font-family: Georgia; 
+	font-size:   12pt;
+}
+
+code {
+	font-family: Lucida Console; 
+}
+
+h1 {
+	page-break-before: always;
+}

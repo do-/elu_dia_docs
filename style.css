@@ -10,3 +10,8 @@ code {
 h1 {
 	page-break-before: always;
 }
+
+a:empty {
+  display: block;
+  position: absolute;
+}

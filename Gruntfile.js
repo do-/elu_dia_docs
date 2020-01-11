@@ -11,10 +11,9 @@ module.exports = function (grunt) {
         
         for (let f of data.srcc) {
 
-        	let lines = [`<span id="${f.name}">`]
-        	if (f.name != f.label) lines.push (`<span id="${f.label}">`)
-			lines.push (`<${tag}>${f.label.replace (/-/g, ' ')}</${tag}></span>`)
-        	if (f.name != f.label) lines.push ('</span>')
+        	let lines = [`<a id="${f.name}"></a>`]
+        	if (f.name != f.label) lines.push (`<a id="${f.label}"></a>`)
+			lines.push (`<${tag}>${f.label.replace (/-/g, ' ')}</${tag}>`)
         	
 			for (let line of grunt.file.read (f.html).split (/[\n\r]+/)) {
 			
@@ -65,7 +64,7 @@ module.exports = function (grunt) {
 					'--outline-depth', 10,		
 					'--footer-center', '[page]',
 					'cover', 'cover.html',
-					'--enable-internal-links',
+//					'--enable-internal-links',
 				],
         	}
 		},		

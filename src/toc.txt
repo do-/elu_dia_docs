@@ -77,6 +77,7 @@ dia_js/Серверная библиотека Dia.js	Home
    dia_js/this.db.select_all_cnt
    dia_js/this.db.select_hash
    dia_js/this.db.select_loop
+   dia_js/this.db.select_stream
    dia_js/this.db.select_scalar
    dia_js/this.db.update
    dia_js/this.db.upsert

@@ -52,6 +52,8 @@ dia_js/Серверная библиотека Dia.js	Home
   dia_js/Подзапросы	Async
   dia_js/Обработчик файлов	File
  dia_js/Модули
+ dia_js/Таймеры
+ dia_js/Извещения-PostgreSQL
  dia_js/API
   dia_js/this.uuid
   dia_js/this.rq
@@ -82,4 +84,3 @@ dia_js/Серверная библиотека Dia.js	Home
    dia_js/this.db.update
    dia_js/this.db.upsert
   dia_js/this.http — HTTP-клиент	this.http
-  dia_js/this.timer — таймер	this.timer

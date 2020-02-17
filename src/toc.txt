@@ -48,9 +48,10 @@ dia_js/Серверная библиотека Dia.js	Home
   dia_js/Генератор SQL	this.db.query
  dia_js/Маршрутизация запросов	type-id-action
  dia_js/Обработчики
+  dia_js/Обработчик-HTTP-запросов
+  dia_js/Подзапросы
   dia_js/Выдача статических файлов	EluStatic
-  dia_js/Подзапросы	Async
-  dia_js/Обработчик файлов	File
+  dia_js/Обработчик-файлов
  dia_js/Модули
  dia_js/Таймеры
  dia_js/Извещения-PostgreSQL

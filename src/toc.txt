@@ -49,6 +49,7 @@ dia_js/Серверная библиотека Dia.js	Home
  dia_js/Маршрутизация запросов	type-id-action
  dia_js/Обработчики
   dia_js/Обработчик-HTTP-запросов
+   dia_js/Аутентификация
   dia_js/Подзапросы
   dia_js/Выдача статических файлов	EluStatic
   dia_js/Обработчик-файлов
